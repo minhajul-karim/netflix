@@ -17,6 +17,11 @@ export const Inner = styled.div`
   max-width: 815px;
   width: 75%;
   margin: auto;
+
+  @media (max-width: 600px) {
+    padding: 70px 0;
+    width: 100%;
+  }
 `
 
 export const Item = styled.div`
@@ -24,7 +29,7 @@ export const Item = styled.div`
   margin-bottom: 10px;
 
   &:first-of-type {
-    margin-top: 3em;
+    margin-top: 1em;
   }
 `
 
@@ -37,7 +42,7 @@ export const Title = styled.h1`
   text-align: center;
 
   @media (max-width: 600px) {
-    font-size: 35px;
+    font-size: 26px;
   }
 `
 
