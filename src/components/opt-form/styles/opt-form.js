@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  height: 100%;
   margin-top: 20px;
   flex-wrap: wrap;
 
@@ -19,7 +18,7 @@ export const Input = styled.input`
   width: 100%;
   border: 0;
   padding: 10px;
-  height: 70px;
+  height: 60px;
   box-sizing: border-box;
 
   @media (max-width: 1050px) {
@@ -30,7 +29,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  height: 70px;
+  height: 60px;
   background: #e50914;
   color: white;
   text-transform: uppercase;
