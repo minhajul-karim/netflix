@@ -4,15 +4,22 @@ import * as Routes from '../constants/routes'
 import { FooterContainer } from '../containers/footer'
 import { HeaderContainer } from '../containers/header'
 
-export default function SignIn() {
+export default function SignUp() {
+  const [firstNameErr, setFirstNameErr] = useState(false)
   const [emailErr, setEmailErr] = useState(false)
   const [passwordErr, setPasswordErr] = useState(false)
+  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const isFormValid = email && password ? true : false
+  const isFormValid = firstName && email && password ? true : false
 
   function isValid() {
     let hasErr = false
+    if (!firstName) {
+      console.log('Invalid name')
+      setFirstNameErr(true)
+      hasErr = true
+    }
     if (!email) {
       console.log('Invalid email')
       setEmailErr(true)
@@ -36,12 +43,21 @@ export default function SignIn() {
     <>
       <HeaderContainer>
         <SignInForm>
-          <SignInForm.Title>Sign In</SignInForm.Title>
+          <SignInForm.Title>Sign Up</SignInForm.Title>
           <SignInForm.Form
             action="/something"
             method="POST"
             onSubmit={submitHandler}
           >
+            <SignInForm.Input
+              type="text"
+              placeholder="First name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            {firstNameErr && (
+              <SignInForm.Error>Please enter a valid name.</SignInForm.Error>
+            )}
             <SignInForm.Input
               type="text"
               placeholder="Email or phone number"
@@ -81,9 +97,9 @@ export default function SignIn() {
             </SignInForm.Link>
           </SignInForm.RememberMeContainer>
           <SignInForm.Text>
-            New to Netflix?{' '}
-            <SignInForm.Link to={Routes.SIGN_UP} color="#fff">
-              Sign up now.
+            Already a user?{' '}
+            <SignInForm.Link to={Routes.SIGN_IN} color="#fff">
+              Sign in now.
             </SignInForm.Link>
           </SignInForm.Text>
           <SignInForm.SmallText>
