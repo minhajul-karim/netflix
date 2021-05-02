@@ -25,11 +25,13 @@ export const Background = styled.div`
   min-height: 600px;
   border-bottom: 8px solid #222;
   background: darkgrey
-    url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left /
-    cover no-repeat;
+    url(${({ src }) =>
+      src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'})
+    top left / cover no-repeat;
 
   @media (max-width: 1100px) {
-    ${({ dontShowOnSmallScreen }) => dontShowOnSmallScreen && `background: none;`}
+    ${({ dontShowOnSmallScreen }) =>
+      dontShowOnSmallScreen && `background: none;`}
   }
 `
 

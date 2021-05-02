@@ -5,12 +5,14 @@ export const Container = styled.section`
   background: rgba(0, 0, 0, 0.75);
   width: 315px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   padding: 60px 68px 90px;
+  border-radius: 5px;
 `
 
-export const Form = styled.form``
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`
 
 export const Title = styled.h1`
   color: #fff;

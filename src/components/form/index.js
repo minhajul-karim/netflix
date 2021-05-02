@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Error,
+  Form,
   Input,
   Label,
   Link,
@@ -14,6 +15,10 @@ import {
 
 export default function SignInForm({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>
+}
+
+SignInForm.Form = function SignInFormTitle({ children, ...restProps }) {
+  return <Form {...restProps}>{children}</Form>
 }
 
 SignInForm.Title = function SignInFormTitle({ children, ...restProps }) {
