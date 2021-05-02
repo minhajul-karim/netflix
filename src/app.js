@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import * as Routes from './constants/routes'
-import Home from './pages/home'
-import SignIn from './pages/signin'
+import { Home, SignIn } from './pages'
 
 export function App() {
   return (
@@ -18,7 +17,6 @@ export function App() {
           <p>I will be the browse page</p>
         </Route>
         <Route path={Routes.HOME}>
-          {/* <p>I am going to be a cloned Netflix application</p> */}
           <Home />
         </Route>
       </Switch>

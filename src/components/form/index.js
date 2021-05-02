@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import {
   Button,
   Container,
   Error,
   Input,
   Label,
+  Link,
   RememberMeContainer,
   SmallText,
   Text,
-  Title
+  Title,
 } from './styles/form'
 
 export default function SignInForm({ children, ...restProps }) {
@@ -45,7 +45,10 @@ SignInForm.Text = function SignInFormTitle({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>
 }
 
-SignInForm.SmallText = function SignInFormSmallText({ children, ...restProps }) {
+SignInForm.SmallText = function SignInFormSmallText({
+  children,
+  ...restProps
+}) {
   return <SmallText {...restProps}>{children}</SmallText>
 }
 
