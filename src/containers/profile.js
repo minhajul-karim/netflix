@@ -22,7 +22,7 @@ export function ProfileContainer({ user, setProfile }) {
               src={user.photoURL}
               onClick={() => setProfile(user)}
             />
-            <Profile.Name>{user.name}</Profile.Name>
+            <Profile.Name>{user.displayName}</Profile.Name>
           </Profile.Item>
         </Profile.Items>
       </Profile>

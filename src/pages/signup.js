@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { SignInForm } from '../components'
 import * as Routes from '../constants/routes'
 import { FooterContainer } from '../containers/footer'
 import { HeaderContainer } from '../containers/header'
+import { FirebaseContext } from '../context/firebase'
 
 export default function SignUp() {
   const [firstNameErr, setFirstNameErr] = useState(false)
@@ -11,7 +13,9 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { firebase } = useContext(FirebaseContext)
   const isFormValid = firstName && email && password ? true : false
+  const history = useHistory()
 
   function isValid() {
     let hasErr = false
@@ -35,8 +39,26 @@ export default function SignUp() {
 
   function submitHandler(event) {
     event.preventDefault()
-    console.log('Form submitted')
-    console.log(isValid())
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        userCredential.user
+          .updateProfile({
+            displayName: firstName,
+            photoURL: Math.floor(Math.random() * 5) + 1,
+          })
+          .then(() => {
+            setFirstName('')
+            setEmail('')
+            setPassword('')
+            history.push(Routes.BROWSE)
+          })
+      })
+      .catch((err) => {
+        // @TODO: Handle error
+        console.log(err)
+      })
   }
 
   return (
@@ -45,7 +67,7 @@ export default function SignUp() {
         <SignInForm>
           <SignInForm.Title>Sign Up</SignInForm.Title>
           <SignInForm.Form
-            action="/something"
+            action={Routes.BROWSE}
             method="POST"
             onSubmit={submitHandler}
           >
@@ -82,7 +104,7 @@ export default function SignUp() {
               </SignInForm.Error>
             )}
             <SignInForm.Button disabled={!isFormValid}>
-              Sign In
+              Sign Up
             </SignInForm.Button>
           </SignInForm.Form>
           <SignInForm.RememberMeContainer>

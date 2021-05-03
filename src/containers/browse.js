@@ -4,10 +4,9 @@ import { ProfileContainer } from './profile'
 
 export function BrowseContainer() {
   const [profile, setProfile] = useState({})
-  console.log(profile)
 
   const user = {
-    name: 'Rizon',
+    displayName: 'Rizon',
     photoURL: '2',
   }
 

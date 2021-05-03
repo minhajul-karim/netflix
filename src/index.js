@@ -7,7 +7,8 @@ import { GlobalStyles } from './global-styles'
 const config = {
   apiKey: 'AIzaSyDsmKdPD0_m429fFXvtUrv423W1-Ad_5Bs',
   authDomain: 'netflix-mk-7169d.firebaseapp.com',
-  databaseURL: 'https://netflix-mk-7169d-default-rtdb.asia-southeast1.firebasedatabase.app',
+  databaseURL:
+    'https://netflix-mk-7169d-default-rtdb.asia-southeast1.firebasedatabase.app',
   projectId: 'netflix-mk-7169d',
   storageBucket: 'netflix-mk-7169d.appspot.com',
   messagingSenderId: '841431528855',
