@@ -18,6 +18,17 @@ export const Container = styled.section`
   }
 `
 
+export const Group = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const TextLink = styled(ReachRouterLink)`
+  color: #fff;
+  margin-right: 10px;
+`
+
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,7 +50,7 @@ export const Link = styled.p`
   color: #fff;
   text-decoration: none;
   margin-right: 30px;
-  font-weight: ${({ active }) => (active === 'true' ? '700' : 'normal')};
+  font-weight: ${({ active }) => (active ? '700' : 'normal')};
   cursor: pointer;
 
   &:hover {
