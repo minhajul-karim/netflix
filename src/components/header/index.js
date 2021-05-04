@@ -4,12 +4,15 @@ import {
   Background,
   ButtonLink,
   Container,
+  Dropdown,
   Feature,
   FeatureCallOut,
   Group,
   Link,
   Logo,
+  Picture,
   PlayButton,
+  Profile,
   Search,
   SearchIcon,
   SearchInput,
@@ -90,13 +93,25 @@ Header.SearchBar = function HeaderSearchBar({
   )
 }
 
+Header.Dropdown = function HeaderDropdown({ children, ...restProps }) {
+  return <Dropdown {...restProps}>{children}</Dropdown>
+}
+
+Header.Profile = function HeaderProfile({ children, ...restProps }) {
+  return <Profile {...restProps}>{children}</Profile>
+}
+
+Header.Picture = function HeaderPicture({ src, ...restProps }) {
+  return <Picture src={`/images/users/${src}.png`} {...restProps} />
+}
+
 /*
- * Another implementation of ButtonLink assuming we have a styled component called SigninButton
- * Header.ButtonLink = function HeaderButtonLink({ to, children, ...restProps }) {
-    return (
-      <ReachRouterLink to={to}>
-        <SigninButton {...restProps}>{children}</SigninButton>
-      </ReachRouterLink>
+* Another implementation of ButtonLink assuming we have a styled component called SigninButton
+* Header.ButtonLink = function HeaderButtonLink({ to, children, ...restProps }) {
+  return (
+    <ReachRouterLink to={to}>
+    <SigninButton {...restProps}>{children}</SigninButton>
+    </ReachRouterLink>
     )
   }
- */
+  */

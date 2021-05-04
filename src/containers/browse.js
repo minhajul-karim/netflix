@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Header } from '../components'
 import * as Routes from '../constants/routes'
+import { FirebaseContext } from '../context/firebase'
 import { FooterContainer } from './footer'
 import { ProfileContainer } from './profile'
 
@@ -8,6 +9,7 @@ export function BrowseContainer() {
   const [profile, setProfile] = useState({})
   const [category, setCategory] = useState('series')
   const [searchTerm, setSearchTerm] = useState('')
+  const { firebase } = useContext(FirebaseContext)
 
   const user = {
     displayName: 'Rizon',
@@ -42,6 +44,20 @@ export function BrowseContainer() {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />
+            <Header.Profile>
+              <Header.Picture src={user.photoURL} />
+              <Header.Dropdown>
+                <Header.Group>
+                  <Header.Picture src={user.photoURL} />
+                  <Header.Link>{user.displayName}</Header.Link>
+                </Header.Group>
+                <Header.Group>
+                  <Header.Link onClick={() => firebase.auth().signOut()}>
+                    Sign Out
+                  </Header.Link>
+                </Header.Group>
+              </Header.Dropdown>
+            </Header.Profile>
           </Header.Group>
         </Header.Frame>
 

@@ -20,7 +20,7 @@ export const Container = styled.section`
 
 export const Group = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 
@@ -50,9 +50,11 @@ export const Link = styled.p`
   margin-right: 30px;
   font-weight: ${({ active }) => (active ? '700' : 'normal')};
   cursor: pointer;
+  letter-spacing: ${({ active }) => (active ? '0' : '0.25px')};
 
   &:hover {
     font-weight: bold;
+    letter-spacing: 0;
   }
   &:last-of-type {
     margin-right: 0;
@@ -76,10 +78,6 @@ export const ButtonLink = styled(ReachRouterLink)`
   &:hover {
     background: #f40612;
   }
-`
-
-export const SigninButton = styled.button`
-  background: orangered;
 `
 
 export const Logo = styled.img`
@@ -134,8 +132,8 @@ export const PlayButton = styled.button`
     transition: background-color: 0.5s ease;
     
     &:hover {
-        background: #ff1e1e;
-        color: white;
+      background: #ff1e1e;
+      color: white;
     }
 `
 
@@ -152,7 +150,7 @@ export const SearchIcon = styled.button`
 
   img {
     filter: brightness(0) invert(1);
-    width: 16px;
+    width: 20px;
   }
 `
 
@@ -167,4 +165,65 @@ export const SearchInput = styled.input`
   padding: ${({ active }) => (active === true ? '0 10px' : '0')};
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '200px' : '0px')};
+`
+
+export const Picture = styled.img`
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  margin-right: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+`
+
+export const Dropdown = styled.div`
+  display: none;
+  position: absolute;
+  background-color: #000;
+  padding: 10px;
+  width: 100px;
+  top: 43px;
+  right: 10px;
+
+  ${Group}:last-of-type ${Link} {
+    cursor: pointer;
+  }
+
+  ${Group} {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    ${Link}, ${Picture} {
+      cursor: default;
+    }
+  }
+
+  button {
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+`
+
+export const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  position: relative;
+
+  button {
+    cursor: pointer;
+  }
+
+  &:hover > ${Dropdown} {
+    display: flex;
+    flex-direction: column;
+  }
 `
