@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link as ReachRouterLink } from 'react-router-dom'
 import {
   Background,
@@ -10,6 +10,9 @@ import {
   Link,
   Logo,
   PlayButton,
+  Search,
+  SearchIcon,
+  SearchInput,
   Text,
 } from './styles/header'
 
@@ -62,6 +65,29 @@ Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
 
 Header.Text = function HeaderText({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>
+}
+
+Header.SearchBar = function HeaderSearchBar({
+  searchTerm,
+  setSearchTerm,
+  ...restProps
+}) {
+  const [isInputActive, setIsInputActive] = useState(false)
+
+  return (
+    <Search>
+      <SearchIcon onClick={() => setIsInputActive((prevState) => !prevState)}>
+        <img src="/images/icons/search.png" alt="Search" />
+      </SearchIcon>
+      <SearchInput
+        type="text"
+        placeholder="search here"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        active={isInputActive}
+      />
+    </Search>
+  )
 }
 
 /*

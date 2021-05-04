@@ -30,12 +30,13 @@ export const Background = styled.div`
   height: calc(100vh - 8px);
   min-height: 600px;
   border-bottom: 8px solid #222;
-  background-color: red;
-  background: darkgrey
-    url(${({ src }) =>
-      src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'})
-    top left / cover no-repeat;
-  background-blend-mode: multiply;
+  background-color: #5a4646;
+  background-image: url(${({ src }) =>
+    src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'});
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: ${({ darken }) => darken && 'multiply'};
 
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallScreen }) =>
@@ -136,4 +137,34 @@ export const PlayButton = styled.button`
         background: #ff1e1e;
         color: white;
     }
+`
+
+export const Search = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const SearchIcon = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+
+  img {
+    filter: brightness(0) invert(1);
+    width: 16px;
+  }
+`
+
+export const SearchInput = styled.input`
+  background-color: #44444459;
+  color: white;
+  border: 1px solid white;
+  transition: width 0.5s;
+  height: 30px;
+  font-size: 14px;
+  margin-left: ${({ active }) => (active === true ? '10px' : '0')};
+  padding: ${({ active }) => (active === true ? '0 10px' : '0')};
+  opacity: ${({ active }) => (active === true ? '1' : '0')};
+  width: ${({ active }) => (active === true ? '200px' : '0px')};
 `

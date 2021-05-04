@@ -7,6 +7,7 @@ import { ProfileContainer } from './profile'
 export function BrowseContainer() {
   const [profile, setProfile] = useState({})
   const [category, setCategory] = useState('series')
+  const [searchTerm, setSearchTerm] = useState('')
 
   const user = {
     displayName: 'Rizon',
@@ -15,7 +16,7 @@ export function BrowseContainer() {
 
   return profile.displayName ? (
     <>
-      <Header src="joker1">
+      <Header src="joker1" darken={true}>
         <Header.Frame>
           <Header.Group>
             <Header.Logo
@@ -35,6 +36,12 @@ export function BrowseContainer() {
             >
               Films
             </Header.Link>
+          </Header.Group>
+          <Header.Group>
+            <Header.SearchBar
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
           </Header.Group>
         </Header.Frame>
 
