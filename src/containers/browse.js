@@ -1,21 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ActivityIndicator, Header } from '../components'
 import * as Routes from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import { FooterContainer } from './footer'
 import { ProfileContainer } from './profile'
 
-export function BrowseContainer() {
+export function BrowseContainer({ slides }) {
   const [profile, setProfile] = useState({})
   const [category, setCategory] = useState('series')
   const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [slideRows, setSlideRows] = useState([])
   const { firebase } = useContext(FirebaseContext)
 
   const user = {
     displayName: 'Rizon',
     photoURL: '2',
   }
+
+  useEffect(() => {
+    setSlideRows(slides[category])
+  }, [category, slides])
 
   return profile.displayName ? (
     isLoading ? (
@@ -77,6 +82,27 @@ export function BrowseContainer() {
             <Header.PlayButton>Play</Header.PlayButton>
           </Header.Feature>
         </Header>
+
+        <Card.Group>
+          {slideRows.map((item) => (
+            <Card key={`${category}-${item.title.toLoweCase()}`}>
+              <Card.Title>{item.title}</Card.Title>
+              <Card.Entries>
+                {item.data.map((cardItem) => (
+                  <Card.Item key={cardItem.id} item={cardItem}>
+                    <Card.Image
+                      src={`/images/${category}/${cardItem.genre}/${cardItem.slug}/small.png`}
+                    />
+                    <Card.Meta>
+                      <Card.Subtitle>{cardItem.title}</Card.Subtitle>
+                      <Card.Text>{cardItem.text}</Card.Text>
+                    </Card.Meta>
+                  </Card.Item>
+                ))}
+              </Card.Entries>
+            </Card>
+          ))}
+        </Card.Group>
         <FooterContainer />
       </>
     )
