@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ActivityIndicator, Header } from '../components'
+import { ActivityIndicator, Header, Card } from '../components'
 import * as Routes from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import { FooterContainer } from './footer'
@@ -85,21 +85,22 @@ export function BrowseContainer({ slides }) {
 
         <Card.Group>
           {slideRows.map((item) => (
-            <Card key={`${category}-${item.title.toLoweCase()}`}>
+            <Card key={`${category}-${item.title.toLowerCase()}`}>
               <Card.Title>{item.title}</Card.Title>
-              <Card.Entries>
+              <Card.Entities>
                 {item.data.map((cardItem) => (
                   <Card.Item key={cardItem.id} item={cardItem}>
                     <Card.Image
-                      src={`/images/${category}/${cardItem.genre}/${cardItem.slug}/small.png`}
+                      src={`/images/${category}/${cardItem.genre}/${cardItem.slug}/small.jpg`}
                     />
                     <Card.Meta>
-                      <Card.Subtitle>{cardItem.title}</Card.Subtitle>
+                      <Card.SubTitle>{cardItem.title}</Card.SubTitle>
                       <Card.Text>{cardItem.text}</Card.Text>
                     </Card.Meta>
                   </Card.Item>
                 ))}
-              </Card.Entries>
+              </Card.Entities>
+              <Card.Feature category={category} />
             </Card>
           ))}
         </Card.Group>
