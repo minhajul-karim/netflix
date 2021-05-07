@@ -27,7 +27,7 @@ export function BrowseContainer({ slides }) {
       <ActivityIndicator src={user.photoURL} />
     ) : (
       <>
-        <Header src="joker1" darken={true}>
+        <Header src="joker1" darken={true} border={false}>
           <Header.Frame>
             <Header.Group>
               <Header.Logo
@@ -95,7 +95,7 @@ export function BrowseContainer({ slides }) {
                     />
                     <Card.Meta>
                       <Card.SubTitle>{cardItem.title}</Card.SubTitle>
-                      <Card.Text>{cardItem.text}</Card.Text>
+                      <Card.Text>{cardItem.description}</Card.Text>
                     </Card.Meta>
                   </Card.Item>
                 ))}

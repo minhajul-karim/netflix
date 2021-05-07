@@ -29,7 +29,7 @@ export const Background = styled.div`
   flex-direction: column;
   height: calc(100vh - 8px);
   min-height: 600px;
-  border-bottom: 8px solid #222;
+  border-bottom: ${({ border }) => border && '8px solid #222'};
   background-color: #5a4646;
   background-image: url(${({ src }) =>
     src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg'});

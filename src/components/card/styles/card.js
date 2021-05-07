@@ -4,9 +4,10 @@ export const Title = styled.p`
   font-size: 24px;
   color: #e5e5e5;
   font-weight: bold;
-  margin-left: 56px;
-  margin-right: 56px;
-  margin-top: 0;
+  width: 95%;
+  max-width: 1245px;
+  margin: 20px auto;
+  z-index: 0;
 `
 
 export const Container = styled.div`
@@ -17,7 +18,7 @@ export const Container = styled.div`
 
   > ${Title} {
     @media (max-width: 1000px) {
-      margin-left: 30px;
+      // margin-left: 30px;
     }
   }
 
@@ -35,48 +36,49 @@ export const Group = styled.div`
 
   > ${Container}:first-of-type {
     @media (min-width: 1000px) {
-      margin-top: -100px;
+      // margin-top: -100px;
     }
   }
 `
 
 export const SubTitle = styled.p`
-  font-size: 12px;
+  font-size: 14px;
   color: white;
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0;
   user-select: none;
   display: none;
 `
 
 export const Text = styled.p`
-  margin-top: 5px;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
-  margin-bottom: 0;
   user-select: none;
   display: none;
   line-height: normal;
 `
 
 export const Entities = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+  width: 95%;
+  max-width: 1245px;
+  margin: 0 auto;
 `
 
 export const Meta = styled.div`
   display: none;
   position: absolute;
+  width: 100%;
   bottom: 0;
   padding: 10px;
   background-color: #0000008f;
+  box-sizing: border-box;
 `
 
 export const Image = styled.img`
   border: 0;
   width: 100%;
-  max-width: 305px;
   cursor: pointer;
   height: auto;
   padding: 0;
@@ -86,36 +88,18 @@ export const Image = styled.img`
 export const Item = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 5px;
   position: relative;
   cursor: pointer;
-  transition: transform 0.2;
+  transition: all 0.5s;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
     z-index: 99;
   }
 
   @media (min-width: 1000px) {
     &:hover ${Meta}, &:hover ${SubTitle}, &:hover ${Text} {
       display: block;
-      z-index: 100;
-    }
-  }
-
-  &:first-of-type {
-    margin-left: 56px;
-
-    @media (max-width: 1000px) {
-      margin-left: 30px;
-    }
-  }
-
-  &:last-of-type {
-    margin-right: 56px;
-
-    @media (max-width: 1000px) {
-      margin-right: 30px;
     }
   }
 `

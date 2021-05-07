@@ -19,9 +19,16 @@ import {
   Text,
 } from './styles/header'
 
-export default function Header({ bg = true, children, ...restProps }) {
+export default function Header({
+  bg = true,
+  border = true,
+  children,
+  ...restProps
+}) {
   return bg ? (
-    <Background {...restProps}>{children}</Background>
+    <Background border={border} {...restProps}>
+      {children}
+    </Background>
   ) : (
     <>{children}</>
   )
