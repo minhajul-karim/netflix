@@ -82,6 +82,7 @@ Card.Feature = function CardFeature({
             {feature.genre.charAt(0).toUpperCase() + feature.genre.slice(1)}
           </FeatureText>
         </Group>
+        {children}
       </Content>
     </Feature>
   )

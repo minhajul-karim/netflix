@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ActivityIndicator, Header, Card } from '../components'
+import { ActivityIndicator, Header, Card, Player } from '../components'
 import * as Routes from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
 import { FooterContainer } from './footer'
@@ -129,7 +129,12 @@ export function BrowseContainer({ slides }) {
                   category={category}
                   feature={feature}
                   setShouldDisplayFeature={setShouldDisplayFeature}
-                />
+                >
+                  <Player>
+                    <Player.Button />
+                    <Player.Video />
+                  </Player>
+                </Card.Feature>
               )}
             </Card>
           ))}
