@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link as ReachRouterLink } from 'react-router-dom'
 import {
   Background,
@@ -83,10 +83,16 @@ Header.SearchBar = function HeaderSearchBar({
   ...restProps
 }) {
   const [isInputActive, setIsInputActive] = useState(false)
+  const inputRef = useRef(null)
+
+  const clickHandler = () => {
+    setIsInputActive((prevState) => !prevState)
+    inputRef.current.focus()
+  }
 
   return (
     <Search>
-      <SearchIcon onClick={() => setIsInputActive((prevState) => !prevState)}>
+      <SearchIcon onClick={clickHandler}>
         <img src="/images/icons/search.png" alt="Search" />
       </SearchIcon>
       <SearchInput
@@ -95,6 +101,7 @@ Header.SearchBar = function HeaderSearchBar({
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         active={isInputActive}
+        ref={inputRef}
       />
     </Search>
   )
