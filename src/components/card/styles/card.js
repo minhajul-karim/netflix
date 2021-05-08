@@ -59,7 +59,7 @@ export const Text = styled.p`
 
 export const Entities = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 10px;
   width: 95%;
   max-width: 1245px;
@@ -92,12 +92,12 @@ export const Item = styled.div`
   cursor: pointer;
   transition: all 0.5s;
 
-  &:hover {
-    transform: scale(1.2);
-    z-index: 99;
-  }
-
   @media (min-width: 1000px) {
+    &:hover {
+      transform: scale(1.2);
+      z-index: 99;
+    }
+
     &:hover ${Meta}, &:hover ${SubTitle}, &:hover ${Text} {
       display: block;
     }
@@ -173,8 +173,7 @@ export const Content = styled.div`
 `
 
 export const Maturity = styled.div`
-  background-color: ${({ rating }) => (rating) =>
-    rating >= 15 ? 'red' : 'green'};
+  background-color: ${({ rating }) => (rating >= 15 ? 'red' : 'green')};
   border-radius: 15px;
   width: 20px;
   padding: 5px;
@@ -182,6 +181,6 @@ export const Maturity = styled.div`
   color: white;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
   font-size: 12px;
 `
