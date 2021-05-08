@@ -11,6 +11,9 @@ export function BrowseContainer({ slides }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [slideRows, setSlideRows] = useState([])
+  const [feature, setFeature] = useState({})
+  const [shouldDisplayFeature, setShouldDisplayFeature] = useState(false)
+  const [displayFeatureIndex, setDisplayFeatureIndex] = useState(null)
   const { firebase } = useContext(FirebaseContext)
 
   const user = {
@@ -84,12 +87,20 @@ export function BrowseContainer({ slides }) {
         </Header>
 
         <Card.Group>
-          {slideRows.map((item) => (
+          {slideRows.map((item, index) => (
             <Card key={`${category}-${item.title.toLowerCase()}`}>
               <Card.Title>{item.title}</Card.Title>
               <Card.Entities>
                 {item.data.map((cardItem) => (
-                  <Card.Item key={cardItem.id} item={cardItem}>
+                  <Card.Item
+                    key={cardItem.id}
+                    item={cardItem}
+                    onClick={() => {
+                      setFeature(cardItem)
+                      setShouldDisplayFeature(true)
+                      setDisplayFeatureIndex(index)
+                    }}
+                  >
                     <Card.Image
                       src={`/images/${category}/${cardItem.genre}/${cardItem.slug}/small.jpg`}
                     />
@@ -100,7 +111,13 @@ export function BrowseContainer({ slides }) {
                   </Card.Item>
                 ))}
               </Card.Entities>
-              <Card.Feature category={category} />
+              {shouldDisplayFeature && index === displayFeatureIndex && (
+                <Card.Feature
+                  category={category}
+                  feature={feature}
+                  setShouldDisplayFeature={setShouldDisplayFeature}
+                />
+              )}
             </Card>
           ))}
         </Card.Group>

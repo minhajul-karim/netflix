@@ -71,7 +71,7 @@ export const Meta = styled.div`
   position: absolute;
   width: 100%;
   bottom: 0;
-  padding: 10px;
+  padding: 0 10px;
   background-color: #0000008f;
   box-sizing: border-box;
 `

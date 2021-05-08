@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react'
+import React from 'react'
 import {
   Container,
   Group,
@@ -17,24 +17,8 @@ import {
   Image,
 } from './styles/card'
 
-const FeatureContext = createContext()
-
 export default function Card({ children, ...restProps }) {
-  const [showFeature, setShowFeature] = useState(false)
-  const [itemFeature, setItemFeature] = useState(false)
-
-  return (
-    <FeatureContext.Provider
-      value={{
-        showFeature,
-        setShowFeature,
-        itemFeature,
-        setItemFeature,
-      }}
-    >
-      <Container {...restProps}>{children}</Container>
-    </FeatureContext.Provider>
-  )
+  return <Container {...restProps}>{children}</Container>
 }
 
 Card.Group = function CardGroup({ children, ...restProps }) {
@@ -66,50 +50,39 @@ Card.Image = function CardMeta({ src, ...restProps }) {
 }
 
 Card.Item = function CardItem({ item, children, ...restProps }) {
-  const { setShowFeature, setItemFeature } = useContext(FeatureContext)
-
-  return (
-    <Item
-      onClick={() => {
-        setShowFeature(true)
-        setItemFeature(item)
-      }}
-      {...restProps}
-    >
-      {children}
-    </Item>
-  )
+  return <Item {...restProps}>{children}</Item>
 }
 
 Card.Image = function CardImage({ ...restProps }) {
   return <Image {...restProps} />
 }
 
-Card.Feature = function CardFeature({ children, category, ...restProps }) {
-  const { showFeature, itemFeature } = useContext(FeatureContext)
-
+Card.Feature = function CardFeature({
+  children,
+  category,
+  feature,
+  setShouldDisplayFeature,
+  ...restProps
+}) {
   return (
-    showFeature && (
-      <Feature
-        src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}
-      >
-        <Content>
-          <FeatureTitle>{itemFeature.title}</FeatureTitle>
-          <FeatureText>{itemFeature.text}</FeatureText>
-          <FeatureClose>
-            <img src={'images/icons/close.png'} alt="Close" />
-          </FeatureClose>
-          <Group margin="30px 0" flexDirection="row" alignItems="center">
-            <Maturity rating={itemFeature.maturity}>
-              {itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}
-            </Maturity>
-            <FeatureText fontWeight="bold">
-              {itemFeature.genre.charAt(0).toUpperCase() +
-                itemFeature.genre.slice(1)}
-            </FeatureText>
-          </Group>
-        </Content>
-      </Feature>
-    )
+    <Feature
+      src={`/images/${category}/${feature.genre}/${feature.slug}/large.jpg`}
+    >
+      <Content>
+        <FeatureTitle>{feature.title}</FeatureTitle>
+        <FeatureText>{feature.text}</FeatureText>
+        <FeatureClose onClick={() => setShouldDisplayFeature(false)}>
+          <img src={'images/icons/close.png'} alt="Close" />
+        </FeatureClose>
+        <Group margin="30px 0" flexDirection="row" alignItems="center">
+          <Maturity rating={feature.maturity}>
+            {feature.maturity < 12 ? 'PG' : feature.maturity}
+          </Maturity>
+          <FeatureText fontWeight="bold">
+            {feature.genre.charAt(0).toUpperCase() + feature.genre.slice(1)}
+          </FeatureText>
+        </Group>
+      </Content>
+    </Feature>
   )
 }
