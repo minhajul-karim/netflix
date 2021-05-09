@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { SignInForm } from '../components'
+import { Form } from '../components'
 import * as Routes from '../constants/routes'
 import { FooterContainer } from '../containers/footer'
 import { HeaderContainer } from '../containers/header'
@@ -31,7 +31,6 @@ export default function SignUp() {
           })
       })
       .catch((err) => {
-        // @TODO: Handle error
         console.log(err)
         setError(err.message)
       })
@@ -40,62 +39,58 @@ export default function SignUp() {
   return (
     <>
       <HeaderContainer>
-        <SignInForm>
-          <SignInForm.Title>Sign Up</SignInForm.Title>
-          <SignInForm.Form
+        <Form>
+          <Form.Title>Sign Up</Form.Title>
+          <Form.Base
             action={Routes.BROWSE}
             method="POST"
             onSubmit={submitHandler}
           >
-            {error && <SignInForm.Error>{error}</SignInForm.Error>}
-            <SignInForm.Input
+            {error && <Form.Error>{error}</Form.Error>}
+            <Form.Input
               type="text"
               placeholder="First name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            <SignInForm.Input
+            <Form.Input
               type="text"
               placeholder="Email or phone number"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <SignInForm.Input
+            <Form.Input
               type="password"
               placeholder="Password"
               autoComplete="off"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <SignInForm.Button disabled={!isFormValid}>
-              Sign Up
-            </SignInForm.Button>
-          </SignInForm.Form>
-          <SignInForm.RememberMeContainer>
-            <SignInForm.Label>
-              <SignInForm.Input type="checkbox" />
-              <SignInForm.SmallText color="bright">
-                Remember me
-              </SignInForm.SmallText>
-            </SignInForm.Label>
-            <SignInForm.Link to="/help" size="small" color="#b3b3b3">
+            <Form.Button disabled={!isFormValid}>Sign Up</Form.Button>
+          </Form.Base>
+          <Form.RememberMeContainer>
+            <Form.Label>
+              <Form.Input type="checkbox" />
+              <Form.SmallText color="bright">Remember me</Form.SmallText>
+            </Form.Label>
+            <Form.Link to="/help" size="small" color="#b3b3b3">
               Need help?
-            </SignInForm.Link>
-          </SignInForm.RememberMeContainer>
-          <SignInForm.Text>
+            </Form.Link>
+          </Form.RememberMeContainer>
+          <Form.Text>
             Already a user?{' '}
-            <SignInForm.Link to={Routes.SIGN_IN} color="#fff">
+            <Form.Link to={Routes.SIGN_IN} color="#fff">
               Sign in now.
-            </SignInForm.Link>
-          </SignInForm.Text>
-          <SignInForm.SmallText>
+            </Form.Link>
+          </Form.Text>
+          <Form.SmallText>
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot.{' '}
-            <SignInForm.Link to="#" color="#0071eb">
+            <Form.Link to="#" color="#0071eb">
               Learn more.
-            </SignInForm.Link>
-          </SignInForm.SmallText>
-        </SignInForm>
+            </Form.Link>
+          </Form.SmallText>
+        </Form>
       </HeaderContainer>
       <FooterContainer />
     </>

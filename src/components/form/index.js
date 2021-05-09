@@ -3,7 +3,7 @@ import {
   Button,
   Container,
   Error,
-  Form,
+  Base,
   Input,
   Label,
   Link,
@@ -13,54 +13,49 @@ import {
   Title,
 } from './styles/form'
 
-export default function SignInForm({ children, ...restProps }) {
+export default function Form({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>
 }
 
-SignInForm.Form = function SignInFormTitle({ children, ...restProps }) {
-  return <Form {...restProps}>{children}</Form>
+Form.Base = function FormBase({ children, ...restProps }) {
+  return <Base {...restProps}>{children}</Base>
 }
 
-SignInForm.Title = function SignInFormTitle({ children, ...restProps }) {
+Form.Title = function FormTitle({ children, ...restProps }) {
   return <Title {...restProps}>{children}</Title>
 }
 
-SignInForm.Input = function SignInFormTitle({ ...restProps }) {
+Form.Input = function FormInput({ ...restProps }) {
   return <Input {...restProps} />
 }
 
-// <Input type="password" placeholder="some text" />
-
-SignInForm.Button = function SignInFormTitle({ children, ...restProps }) {
+Form.Button = function FormButton({ children, ...restProps }) {
   return <Button {...restProps}>{children}</Button>
 }
 
-SignInForm.RememberMeContainer = function SignInFormRememberMeContainer({
+Form.RememberMeContainer = function FormRememberMeContainer({
   children,
   ...restProps
 }) {
   return <RememberMeContainer {...restProps}>{children}</RememberMeContainer>
 }
 
-SignInForm.Label = function SignInFormTitle({ children, ...restProps }) {
+Form.Label = function FormLabel({ children, ...restProps }) {
   return <Label {...restProps}>{children}</Label>
 }
 
-SignInForm.Text = function SignInFormTitle({ children, ...restProps }) {
+Form.Text = function FormText({ children, ...restProps }) {
   return <Text {...restProps}>{children}</Text>
 }
 
-SignInForm.SmallText = function SignInFormSmallText({
-  children,
-  ...restProps
-}) {
+Form.SmallText = function FormSmallText({ children, ...restProps }) {
   return <SmallText {...restProps}>{children}</SmallText>
 }
 
-SignInForm.Error = function SignInFormError({ children, ...restProps }) {
+Form.Error = function FormError({ children, ...restProps }) {
   return <Error {...restProps}>{children}</Error>
 }
 
-SignInForm.Link = function SignInFormLink({ children, ...restProps }) {
+Form.Link = function FormLink({ children, ...restProps }) {
   return <Link {...restProps}>{children}</Link>
 }

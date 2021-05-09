@@ -9,7 +9,7 @@ export const Container = styled.section`
   border-radius: 5px;
 `
 
-export const Form = styled.form`
+export const Base = styled.form`
   display: flex;
   flex-direction: column;
 `
