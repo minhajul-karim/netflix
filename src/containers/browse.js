@@ -45,24 +45,22 @@ export function BrowseContainer({ slides }) {
       <>
         <Header src="joker1" darken={true} border={false}>
           <Header.Frame>
-            <Header.Group>
-              <Header.Logo
-                to={Routes.HOME}
-                src="/images/misc/logo.svg"
-                alt="logo"
-              />
-              <Header.Link
-                active={category === 'series' ? true : false}
-                onClick={() => setCategory('series')}
-              >
-                Series
-              </Header.Link>
-              <Header.Link
-                active={category === 'films' ? true : false}
-                onClick={() => setCategory('films')}
-              >
-                Films
-              </Header.Link>
+            <Header.Group directionCol={true}>
+              <Header.Logo to={Routes.HOME} setSmallLogo={true} />
+              <Header.Group shouldAbsolute={true}>
+                <Header.Link
+                  active={category === 'series' ? true : false}
+                  onClick={() => setCategory('series')}
+                >
+                  Series
+                </Header.Link>
+                <Header.Link
+                  active={category === 'films' ? true : false}
+                  onClick={() => setCategory('films')}
+                >
+                  Films
+                </Header.Link>
+              </Header.Group>
             </Header.Group>
             <Header.Group>
               <Header.SearchBar
@@ -72,11 +70,11 @@ export function BrowseContainer({ slides }) {
               <Header.Profile>
                 <Header.Picture src={user.photoURL} />
                 <Header.Dropdown>
-                  <Header.Group>
+                  <Header.Group justifyContent="space-between">
                     <Header.Picture src={user.photoURL} />
                     <Header.Link>{user.displayName}</Header.Link>
                   </Header.Group>
-                  <Header.Group>
+                  <Header.Group justifyContent="space-between">
                     <Header.Link onClick={() => firebase.auth().signOut()}>
                       Sign Out
                     </Header.Link>
