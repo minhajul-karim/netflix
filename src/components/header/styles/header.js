@@ -266,3 +266,16 @@ export const Profile = styled.div`
     flex-direction: column;
   }
 `
+
+export const ThemeButton = styled.button`
+  width: 35px;
+  height: 35px;
+  padding: 10px 0;
+  border: 0;
+  font-size: 20px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`

@@ -17,6 +17,7 @@ import {
   SearchIcon,
   SearchInput,
   Text,
+  ThemeButton,
 } from './styles/header'
 
 export default function Header({
@@ -117,6 +118,10 @@ Header.Profile = function HeaderProfile({ children, ...restProps }) {
 
 Header.Picture = function HeaderPicture({ src, ...restProps }) {
   return <Picture src={`/images/users/${src}.png`} {...restProps} />
+}
+
+Header.ThemeButton = function HeaderThemeBtn({ children, ...restProps }) {
+  return <ThemeButton {...restProps}>{children}</ThemeButton>
 }
 
 /*

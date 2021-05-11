@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ActivityIndicator, Header, Card, Player } from '../components'
 import * as Routes from '../constants/routes'
 import { FirebaseContext } from '../context/firebase'
+import { ThemeContext } from '../context/themeContext'
 import { FooterContainer } from './footer'
 import { ProfileContainer } from './profile'
 import Fuse from 'fuse.js'
@@ -16,6 +17,7 @@ export function BrowseContainer({ slides }) {
   const [shouldDisplayFeature, setShouldDisplayFeature] = useState(false)
   const [displayFeatureIndex, setDisplayFeatureIndex] = useState(null)
   const { firebase } = useContext(FirebaseContext)
+  const { isDark, setIsDark } = useContext(ThemeContext)
 
   const user = {
     displayName: 'Rizon',
@@ -45,6 +47,7 @@ export function BrowseContainer({ slides }) {
       <>
         <Header src="joker1" darken={true} border={false}>
           <Header.Frame>
+            {/* Left side of header */}
             <Header.Group directionCol={true}>
               <Header.Logo to={Routes.HOME} setSmallLogo={true} />
               <Header.Group shouldAbsolute={true}>
@@ -62,11 +65,18 @@ export function BrowseContainer({ slides }) {
                 </Header.Link>
               </Header.Group>
             </Header.Group>
+
+            {/* Right side of header */}
             <Header.Group>
               <Header.SearchBar
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
               />
+              <Header.ThemeButton
+                onClick={() => setIsDark((prevMode) => !prevMode)}
+              >
+                {isDark ? '☀️' : '🌙'}
+              </Header.ThemeButton>
               <Header.Profile>
                 <Header.Picture src={user.photoURL} />
                 <Header.Dropdown>
@@ -97,10 +107,10 @@ export function BrowseContainer({ slides }) {
           </Header.Feature>
         </Header>
 
-        <Card.Group>
+        <Card.Group isDark={isDark}>
           {slideRows.map((item, index) => (
             <Card key={`${category}-${item.title.toLowerCase()}`}>
-              <Card.Title>{item.title}</Card.Title>
+              <Card.Title isDark={isDark}>{item.title}</Card.Title>
               <Card.Entities>
                 {item.data.map((cardItem) => (
                   <Card.Item

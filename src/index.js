@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './app'
 import { FirebaseContext } from './context/firebase'
+import { ThemeContextProvider } from './context/themeContext'
 import { GlobalStyles } from './global-styles'
 
 const config = {
@@ -20,8 +21,10 @@ const firebase = window.firebase.initializeApp(config)
 ReactDOM.render(
   <>
     <FirebaseContext.Provider value={{ firebase: window.firebase }}>
-      <GlobalStyles />
-      <App />
+      <ThemeContextProvider>
+        {/* <GlobalStyles /> */}
+        <App />
+      </ThemeContextProvider>
     </FirebaseContext.Provider>
   </>,
   document.getElementById('root')

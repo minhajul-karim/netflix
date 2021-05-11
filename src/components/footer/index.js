@@ -1,8 +1,16 @@
 import React from 'react'
-import { Break, Column, Container, Link, Row, Text, Title } from './styles/footer'
+import {
+  Break,
+  Column,
+  Container,
+  Link,
+  Row,
+  Text,
+  Title,
+} from './styles/footer'
 
 export default function Footer({ children, ...restProps }) {
-  return <Container>{children}</Container>
+  return <Container {...restProps}>{children}</Container>
 }
 
 Footer.Row = function FooterRow({ children, ...restProps }) {
