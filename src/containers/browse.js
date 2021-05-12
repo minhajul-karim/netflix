@@ -107,10 +107,10 @@ export function BrowseContainer({ slides }) {
           </Header.Feature>
         </Header>
 
-        <Card.Group isDark={isDark}>
+        <Card.Group>
           {slideRows.map((item, index) => (
             <Card key={`${category}-${item.title.toLowerCase()}`}>
-              <Card.Title isDark={isDark}>{item.title}</Card.Title>
+              <Card.Title>{item.title}</Card.Title>
               <Card.Entities>
                 {item.data.map((cardItem) => (
                   <Card.Item

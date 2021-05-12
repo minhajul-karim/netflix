@@ -9,11 +9,11 @@ import { ThemeContext } from './context/themeContext'
 
 export function App() {
   const { user } = useAuthListener()
-  const { isDark } = useContext(ThemeContext)
+  // const { isDark } = useContext(ThemeContext)
 
   return (
     <>
-      <GlobalStyles isDark={isDark} />
+      {/* <GlobalStyles isDark={isDark} /> */}
       <Router>
         <Switch>
           <ShouldRedirect

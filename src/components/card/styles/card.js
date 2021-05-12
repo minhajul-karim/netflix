@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Title = styled.p`
   font-size: 24px;
-  color: ${({ isDark }) => (isDark ? '#e5e5e5' : '#000')};
+  color: ${({ theme }) => theme.color};
   font-weight: bold;
   width: 95%;
   max-width: 1245px;
@@ -22,8 +22,6 @@ export const Container = styled.div`
 `
 
 export const Group = styled.div`
-  // background: ${({ isDark }) => (isDark ? '#000' : '#fff')};
-  padding: 0 0 50px 0;
   diplay: flex;
   flex-direction: ${({ flexDirection }) =>
     flexDirection === 'row' ? 'row' : 'column'};
@@ -112,7 +110,6 @@ export const Feature = styled.div`
   background: url(${({ src }) => src});
   background-size: contain;
   position: relative;
-  height: 360px;
   background-position-x: right;
   background-repeat: no-repeat;
   background-color: black;
@@ -134,6 +131,7 @@ export const Feature = styled.div`
 
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
+  color: #fff;
 `
 
 export const FeatureClose = styled.button`
