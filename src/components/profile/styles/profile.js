@@ -6,7 +6,7 @@ export const Container = styled.section`
 
 export const Title = styled.h1`
   font-size: 40px;
-  color: #fff;
+  color: ${({ theme }) => theme.color};
   text-align: center;
 `
 
@@ -19,7 +19,7 @@ export const Picture = styled.img`
 
 export const Name = styled.p`
   font-size: 16px;
-  color: #808080;
+  color: ${({ theme }) => theme.color};
   text-align: center;
 `
 
@@ -47,7 +47,6 @@ export const Item = styled.div`
 
   &:hover ${Name} {
     font-weight: bold;
-    color: #fff;
   }
 
   &:last-of-type {

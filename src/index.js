@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './app'
 import { FirebaseContext } from './context/firebase'
-import { ThemeContextProvider } from './context/themeContext'
-import { GlobalStyles } from './global-styles'
 
 const config = {
   apiKey: 'AIzaSyDsmKdPD0_m429fFXvtUrv423W1-Ad_5Bs',
@@ -16,15 +14,19 @@ const config = {
   appId: '1:841431528855:web:5cf69ec5aa99b1c20080d2',
 }
 
+const theme = {
+  light: { background: '#fff', color: '#000' },
+  dark: { background: '#000', color: '#fff' },
+}
+
+window.localStorage.setItem('theme', JSON.stringify(theme.light))
+
 const firebase = window.firebase.initializeApp(config)
 
 ReactDOM.render(
   <>
     <FirebaseContext.Provider value={{ firebase: window.firebase }}>
-      <ThemeContextProvider>
-        {/* <GlobalStyles /> */}
-        <App />
-      </ThemeContextProvider>
+      <App />
     </FirebaseContext.Provider>
   </>,
   document.getElementById('root')

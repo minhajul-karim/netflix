@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Title = styled.p`
   font-size: 24px;
-  color: ${({ isDark }) => (isDark ? '#e5e5e5' : '#000')};
+  color: ${({ theme }) => theme.color};
   font-weight: bold;
   width: 95%;
   max-width: 1245px;
@@ -22,7 +22,6 @@ export const Container = styled.div`
 `
 
 export const Group = styled.div`
-  // background: ${({ isDark }) => (isDark ? '#000' : '#fff')};
   padding: 0 0 50px 0;
   diplay: flex;
   flex-direction: ${({ flexDirection }) =>
@@ -33,7 +32,7 @@ export const Group = styled.div`
 
 export const SubTitle = styled.p`
   font-size: 14px;
-  color: white;
+  color: #fff;
   font-weight: bold;
   user-select: none;
   display: none;
@@ -41,7 +40,7 @@ export const SubTitle = styled.p`
 
 export const Text = styled.p`
   font-size: 12px;
-  color: white;
+  color: #fff;
   user-select: none;
   display: none;
   line-height: normal;
@@ -134,6 +133,7 @@ export const Feature = styled.div`
 
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
+  color: #fff;
 `
 
 export const FeatureClose = styled.button`
@@ -168,7 +168,7 @@ export const Maturity = styled.div`
   width: 20px;
   padding: 5px;
   text-align: center;
-  color: white;
+  color: ${({ theme }) => theme.color};
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin: 0 10px 10px 0;

@@ -5,9 +5,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: ${({ isDark }) => (isDark ? '#000' : '#fff')};
-        color: #333333;
-        color: ${({ isDark }) => (isDark ? '#333333' : '#000')};
+        background-color: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.color};
         font-size: 16px;
         margin: 0;
         box-sizing: border-box;

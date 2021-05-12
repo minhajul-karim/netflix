@@ -1,19 +1,22 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as Routes from './constants/routes'
 import { Browse, Home, SignIn, SignUp } from './pages'
-import { useAuthListener } from './hooks'
+import { useAuthListener, useTheme } from './hooks'
 import { ShouldRedirect, ProtectedRoute } from './helpers/routes'
 import { GlobalStyles } from './global-styles'
-import { ThemeContext } from './context/themeContext'
+import { ThemeProvider } from 'styled-components'
 
 export function App() {
   const { user } = useAuthListener()
-  const { isDark } = useContext(ThemeContext)
+  // const { theme } = useTheme()
+  // console.log(theme)
+  const theme = JSON.parse(window.localStorage.getItem('theme'))
+  console.log(theme)
 
   return (
-    <>
-      <GlobalStyles isDark={isDark} />
+    <ThemeProvider theme={{ background: '#000', color: '#fff' }}>
+      <GlobalStyles />
       <Router>
         <Switch>
           <ShouldRedirect
@@ -42,6 +45,6 @@ export function App() {
           </ShouldRedirect>
         </Switch>
       </Router>
-    </>
+    </ThemeProvider>
   )
 }
