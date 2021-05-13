@@ -117,7 +117,6 @@ export const Logo = styled.div`
 `
 
 export const Feature = styled(Container)`
-  // padding: 150px 0 500px 0;
   width: 50%;
   height: 100%;
   flex-direction: column;
@@ -182,6 +181,7 @@ export const Search = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 `
 
 export const SearchIcon = styled.button`

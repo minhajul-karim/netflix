@@ -1,21 +1,17 @@
 import { createContext, useEffect, useState } from 'react'
+import * as themes from '../theme/schema.json'
 
 export const ThemeContext = createContext()
 
-const theme = {
-  light: { background: '#fff', color: '#000' },
-  dark: { background: '#000', color: '#fff' },
-}
-
 export const ThemeContextProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(false)
-  const [curTheme, setCurTheme] = useState(theme.light)
+  const [isDark, setIsDark] = useState(true)
+  const [curTheme, setCurTheme] = useState(themes.default.data.light)
 
   useEffect(() => {
     if (isDark) {
-      setCurTheme(theme.dark)
+      setCurTheme(themes.default.data.dark)
     } else {
-      setCurTheme(theme.light)
+      setCurTheme(themes.default.data.light)
     }
   }, [isDark])
 

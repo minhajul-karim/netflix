@@ -16,7 +16,8 @@ export const Container = styled.div`
 export const Input = styled.input`
   max-width: 450px;
   width: 100%;
-  border: 0;
+  border: 1px solid #000;
+  border-right: 0;
   padding: 10px;
   height: 60px;
   box-sizing: border-box;

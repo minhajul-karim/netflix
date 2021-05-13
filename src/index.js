@@ -36,10 +36,6 @@ ReactDOM.render(
       <ThemeContextProvider>
         <Index />
       </ThemeContextProvider>
-      {/* <ThemeContextProvider>
-        <GlobalStyles />
-        <App />
-      </ThemeContextProvider> */}
     </FirebaseContext.Provider>
   </>,
   document.getElementById('root')
