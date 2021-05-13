@@ -108,6 +108,7 @@ export const Logo = styled.div`
       setSmallLogo && 'url(/images/misc/small.png)'};
     background-repeat: ${({ setSmallLogo }) => setSmallLogo && 'no-repeat'};
     background-size: ${({ setSmallLogo }) => setSmallLogo && 'contain'};
+    margin-right: 0;
   }
 
   @media (min-width: 1449px) {
@@ -206,6 +207,10 @@ export const SearchInput = styled.input`
   padding: ${({ active }) => (active === true ? '0 10px' : '0')};
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '110px' : '0px')};
+
+  @media (max-width: 500px) {
+    width: ${({ active }) => (active === true ? '100px' : '0px')};
+  }
 `
 
 export const Picture = styled.img`

@@ -7,6 +7,12 @@ export const Container = styled.section`
   margin: 0 auto;
   padding: 60px 68px 90px;
   border-radius: 5px;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    padding: 50px 20px;
+    box-sizing: border-box;
+  }
 `
 
 export const Base = styled.form`
