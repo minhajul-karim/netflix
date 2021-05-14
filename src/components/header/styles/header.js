@@ -58,7 +58,7 @@ export const Background = styled.div`
 
 export const Link = styled.p`
   font-size: 20px;
-  color: #fff;
+  color: ${({ theme }) => theme.color};
   text-decoration: none;
   margin-right: 30px;
   font-weight: ${({ active }) => (active ? '700' : 'normal')};
@@ -222,11 +222,11 @@ export const Picture = styled.img`
 `
 
 export const Dropdown = styled.div`
+  width: 125px;
   display: none;
   position: absolute;
-  background-color: #000;
+  background-color: ${({ theme }) => theme.background};
   padding: 10px;
-  width: 100px;
   top: 53px;
   right: 0;
 

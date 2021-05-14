@@ -18,11 +18,10 @@ export function BrowseContainer({ slides }) {
   const [displayFeatureIndex, setDisplayFeatureIndex] = useState(null)
   const { firebase } = useContext(FirebaseContext)
   const { isDark, setIsDark } = useContext(ThemeContext)
-
-  const user = {
-    displayName: 'Rizon',
-    photoURL: '2',
-  }
+  const displayName =
+    profile.displayName && profile.displayName.length > 10
+      ? profile.displayName.substr(0, 8) + '..'
+      : profile.displayName
 
   useEffect(() => {
     setSlideRows(slides[category])
@@ -42,7 +41,7 @@ export function BrowseContainer({ slides }) {
 
   return profile.displayName ? (
     isLoading ? (
-      <ActivityIndicator src={user.photoURL} />
+      <ActivityIndicator src={1} />
     ) : (
       <>
         <Header src="joker1" darken={true} border={false}>
@@ -78,11 +77,11 @@ export function BrowseContainer({ slides }) {
                 {isDark ? '☀️' : '🌙'}
               </Header.ThemeButton>
               <Header.Profile>
-                <Header.Picture src={user.photoURL} />
+                <Header.Picture src={profile.photoURL} />
                 <Header.Dropdown>
                   <Header.Group justifyContent="space-between">
-                    <Header.Picture src={user.photoURL} />
-                    <Header.Link>{user.displayName}</Header.Link>
+                    <Header.Picture src={profile.photoURL} marginRight="10px" />
+                    <Header.Link>{displayName}</Header.Link>
                   </Header.Group>
                   <Header.Group justifyContent="space-between">
                     <Header.Link onClick={() => firebase.auth().signOut()}>
@@ -151,10 +150,6 @@ export function BrowseContainer({ slides }) {
       </>
     )
   ) : (
-    <ProfileContainer
-      user={user}
-      setProfile={setProfile}
-      setIsLoading={setIsLoading}
-    />
+    <ProfileContainer setProfile={setProfile} setIsLoading={setIsLoading} />
   )
 }
