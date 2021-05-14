@@ -1,5 +1,13 @@
 import React from 'react'
-import { Container, Item, Items, Name, Picture, Title } from './styles/profile'
+import {
+  Container,
+  Item,
+  Items,
+  Name,
+  Picture,
+  Title,
+  AddButton,
+} from './styles/profile'
 
 export default function Profile({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>
@@ -28,4 +36,8 @@ Profile.Name = function ProfileName({ children, ...restProps }) {
 
 Profile.Item = function ProfileItems({ children, ...restProps }) {
   return <Item {...restProps}>{children}</Item>
+}
+
+Profile.AddButton = function ProfileAddButton({ children, ...restProps }) {
+  return <AddButton>{children}</AddButton>
 }

@@ -5,20 +5,29 @@ import { FirebaseContext } from '../context/firebase'
 
 export function ProfileContainer({ setProfile, setIsLoading }) {
   const { firebase } = useContext(FirebaseContext)
-  const [displayName, setDisplayName] = useState('')
-  const [photoURL] = useState(1)
+  const [profiles, setProfiles] = useState([
+    { displayName: 'Iffat', photoURL: 1 },
+    { displayName: 'Moku', photoURL: 2 },
+    { displayName: 'Jubayer', photoURL: 3 },
+  ])
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setDisplayName(
-          user.email.substr(0, user.email.indexOf('@')).split(/[.\-_]/)[0]
-        )
+        setProfiles((prevProfiles) => [
+          ...prevProfiles,
+          {
+            displayName: user.email
+              .substr(0, user.email.indexOf('@'))
+              .split(/[.\-_]/)[0],
+            photoURL: prevProfiles.length + 1,
+          },
+        ])
       }
     })
   }, [firebase])
 
-  const clickHandler = () => {
+  const clickHandler = (displayName, photoURL) => {
     setProfile({ displayName, photoURL })
     setTimeout(() => {
       setIsLoading(false)
@@ -39,13 +48,25 @@ export function ProfileContainer({ setProfile, setIsLoading }) {
       <Profile>
         <Profile.Title>Who's watching?</Profile.Title>
         <Profile.Items>
-          <Profile.Item>
-            <Profile.Picture src={photoURL} onClick={clickHandler} />
-            <Profile.Name>
-              {displayName &&
-                displayName[0].toUpperCase() + displayName.slice(1)}
-            </Profile.Name>
-          </Profile.Item>
+          {profiles.map((profile) => (
+            <Profile.Item key={`${profile.displayName}-${profile.photoURL}`}>
+              <Profile.Picture
+                src={profile.photoURL}
+                onClick={() =>
+                  clickHandler(profile.displayName, profile.photoURL)
+                }
+              />
+              <Profile.Name>
+                {profile.displayName[0].toUpperCase() +
+                  profile.displayName.slice(1)}
+              </Profile.Name>
+            </Profile.Item>
+          ))}
+          {profiles.length < 5 && (
+            <Profile.AddButton>
+              <Profile.Picture src="add" alt="Add Profile" />
+            </Profile.AddButton>
+          )}
         </Profile.Items>
       </Profile>
     </>

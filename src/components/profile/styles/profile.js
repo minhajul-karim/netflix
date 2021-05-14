@@ -15,6 +15,11 @@ export const Picture = styled.img`
   height: 150px;
   object-fit: cover;
   box-sizing: border-box;
+
+  @media (max-width: 500px) {
+    width: 90px;
+    height: 90px;
+  }
 `
 
 export const Name = styled.p`
@@ -27,6 +32,7 @@ export const Items = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin-right: 30px;
 
   &:last-of-type {
@@ -51,5 +57,39 @@ export const Item = styled.div`
 
   &:last-of-type {
     margin-right: 0;
+  }
+`
+
+export const AddButton = styled.button`
+  background: #b5afaf;
+  border: 0;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: #fff;
+  }
+
+  @media (max-width: 500px) {
+    width: 50px;
+    height: 50px;
+  }
+
+  ${Picture} {
+    width: 50px;
+    height: 50px;
+    margin-left: 0;
+
+    @media (max-width: 500px) {
+      width: 30px;
+      height: 30px;
+    }
   }
 `
