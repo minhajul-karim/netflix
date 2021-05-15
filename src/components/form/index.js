@@ -7,10 +7,11 @@ import {
   Input,
   Label,
   Link,
-  RememberMeContainer,
+  FlexContainer,
   SmallText,
   Text,
   Title,
+  HorizontalRule,
 } from './styles/form'
 
 export default function Form({ children, ...restProps }) {
@@ -33,11 +34,11 @@ Form.Button = function FormButton({ children, ...restProps }) {
   return <Button {...restProps}>{children}</Button>
 }
 
-Form.RememberMeContainer = function FormRememberMeContainer({
+Form.FlexContainer = function FormRememberMeContainer({
   children,
   ...restProps
 }) {
-  return <RememberMeContainer {...restProps}>{children}</RememberMeContainer>
+  return <FlexContainer {...restProps}>{children}</FlexContainer>
 }
 
 Form.Label = function FormLabel({ children, ...restProps }) {
@@ -58,4 +59,8 @@ Form.Error = function FormError({ children, ...restProps }) {
 
 Form.Link = function FormLink({ children, ...restProps }) {
   return <Link {...restProps}>{children}</Link>
+}
+
+Form.HorizontalRule = function FormHorizontalRule({ ...restProps }) {
+  return <HorizontalRule {...restProps} />
 }

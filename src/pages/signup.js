@@ -62,9 +62,11 @@ export default function SignUp() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Form.Button disabled={!isFormValid}>Sign Up</Form.Button>
+            <Form.Button disabled={!isFormValid} background="#e50914">
+              Sign Up
+            </Form.Button>
           </Form.Base>
-          <Form.RememberMeContainer>
+          <Form.FlexContainer justifyContent="space-between">
             <Form.Label>
               <Form.Input type="checkbox" />
               <Form.SmallText color="bright">Remember me</Form.SmallText>
@@ -72,7 +74,7 @@ export default function SignUp() {
             <Form.Link to="/help" size="small" color="#b3b3b3">
               Need help?
             </Form.Link>
-          </Form.RememberMeContainer>
+          </Form.FlexContainer>
           <Form.Text>
             Already a user?{' '}
             <Form.Link to={Routes.SIGN_IN} color="#fff">

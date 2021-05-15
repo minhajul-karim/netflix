@@ -48,9 +48,11 @@ export default function SignIn(props) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Form.Button disabled={!isFormValid}>Sign In</Form.Button>
+            <Form.Button disabled={!isFormValid} background="#e50914">
+              Sign In
+            </Form.Button>
           </Form.Base>
-          <Form.RememberMeContainer>
+          <Form.FlexContainer justifyContent="space-between">
             <Form.Label>
               <Form.Input type="checkbox" />
               <Form.SmallText color="bright">Remember me</Form.SmallText>
@@ -58,7 +60,7 @@ export default function SignIn(props) {
             <Form.Link to="/help" size="small" color="#b3b3b3">
               Need help?
             </Form.Link>
-          </Form.RememberMeContainer>
+          </Form.FlexContainer>
           <Form.Text>
             New to Netflix?{' '}
             <Form.Link to={Routes.SIGN_UP} color="#fff">

@@ -14,9 +14,8 @@ export function ProfileContainer({ setProfile, setIsLoading }) {
   ])
 
   useEffect(() => {
-    let isMounted = true
     const unsubRef = firebase.auth().onAuthStateChanged((user) => {
-      if (user && isMounted) {
+      if (user) {
         setProfiles((prevProfiles) => [
           ...prevProfiles,
           {
@@ -30,7 +29,6 @@ export function ProfileContainer({ setProfile, setIsLoading }) {
     })
     return () => {
       unsubRef()
-      isMounted = false
     }
   }, [firebase])
 

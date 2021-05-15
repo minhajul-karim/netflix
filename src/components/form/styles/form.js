@@ -18,6 +18,13 @@ export const Container = styled.section`
 export const Base = styled.form`
   display: flex;
   flex-direction: column;
+  max-width: ${({ maxWidth }) => maxWidth};
+  margin: 0 auto;
+  margin-top: ${({ marginTop }) => marginTop};
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
 `
 
 export const Title = styled.h1`
@@ -44,12 +51,14 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
-  background: #e50914;
-  border: 0;
+  background: ${({ background }) => (background ? '#e50914' : 'transparent')};
+  border: ${({ border, theme }) =>
+    border ? `${border} solid ${theme.color}` : '0'};
   border-radius: 4px;
   margin: 24px 0 12px;
+  margin-right: ${({ marginRight }) => marginRight};
   padding: 15px;
-  color: #fff;
+  color: ${({ theme }) => theme.color};
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -71,7 +80,6 @@ export const Link = styled(RouteLink)`
 `
 
 export const Text = styled.p`
-  // color: #8c8c8c;
   color: ${({ theme }) => theme.color};
 `
 
@@ -85,8 +93,22 @@ export const Error = styled.p`
   font-size: 13px;
 `
 
-export const RememberMeContainer = styled.div`
+export const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ justifyContent }) => justifyContent};
   align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: ${({ flexDirection }) => flexDirection};
+    justify-content: center;
+  }
+`
+
+export const HorizontalRule = styled.hr`
+  width: 100%;
+  margin-top: 30px;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `

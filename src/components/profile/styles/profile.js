@@ -11,8 +11,8 @@ export const Title = styled.h1`
 `
 
 export const Picture = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   box-sizing: border-box;
 
@@ -55,8 +55,10 @@ export const Item = styled.div`
     font-weight: bold;
   }
 
-  &:last-of-type {
-    margin-right: 0;
+  @media (max-width: 500px) {
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 `
 
