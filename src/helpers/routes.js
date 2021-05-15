@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom'
 export function ShouldRedirect({
   user,
   path,
-  pathAfterLogIn,
+  pathAfterSignIn,
   children,
   ...restProps
 }) {
@@ -13,7 +13,7 @@ export function ShouldRedirect({
       {...restProps}
       render={() => {
         if (user) {
-          return <Redirect to={{ pathname: pathAfterLogIn }} />
+          return <Redirect to={{ pathname: pathAfterSignIn }} />
         } else {
           return children
         }
@@ -26,15 +26,13 @@ export function ProtectedRoute({ user, children, ...restProps }) {
   return (
     <Route
       {...restProps}
-      render={({ location }) => {
+      render={() => {
         if (user) {
           // go to browse
           return children
         } else {
           // go to sign in
-          return (
-            <Redirect to={{ pathname: 'signin', state: { from: location } }} />
-          )
+          return <Redirect to={{ pathname: 'signin' }} />
         }
       }}
     />

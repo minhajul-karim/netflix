@@ -6,7 +6,7 @@ import { FooterContainer } from '../containers/footer'
 import { HeaderContainer } from '../containers/header'
 import { FirebaseContext } from '../context/firebase'
 
-export default function SignIn() {
+export default function SignIn(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -33,7 +33,7 @@ export default function SignIn() {
       <HeaderContainer>
         <Form>
           <Form.Title>Sign In</Form.Title>
-          <Form.Base action="/something" method="POST" onSubmit={submitHandler}>
+          <Form.Base method="POST" onSubmit={submitHandler}>
             {error && <Form.Error>{error}</Form.Error>}
             <Form.Input
               type="text"

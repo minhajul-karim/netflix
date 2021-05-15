@@ -41,11 +41,7 @@ export default function SignUp() {
       <HeaderContainer>
         <Form>
           <Form.Title>Sign Up</Form.Title>
-          <Form.Base
-            action={Routes.BROWSE}
-            method="POST"
-            onSubmit={submitHandler}
-          >
+          <Form.Base method="POST" onSubmit={submitHandler}>
             {error && <Form.Error>{error}</Form.Error>}
             <Form.Input
               type="text"

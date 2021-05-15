@@ -39,5 +39,5 @@ Profile.Item = function ProfileItems({ children, ...restProps }) {
 }
 
 Profile.AddButton = function ProfileAddButton({ children, ...restProps }) {
-  return <AddButton>{children}</AddButton>
+  return <AddButton {...restProps}>{children}</AddButton>
 }
