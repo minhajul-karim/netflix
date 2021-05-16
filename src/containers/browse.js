@@ -41,7 +41,7 @@ export function BrowseContainer({ slides }) {
 
   return profile.displayName ? (
     isLoading ? (
-      <ActivityIndicator src={1} />
+      <ActivityIndicator src={profile.photoURL} />
     ) : (
       <>
         <Header src="joker1" darken={true} border={false}>

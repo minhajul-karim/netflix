@@ -66,10 +66,9 @@ export const AddButton = styled.button`
   background: #b5afaf;
   border: 0;
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  margin-left: 20px;
-  margin-bottom: 30px;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 40px;
   cursor: pointer;
   display: flex;
   justify-content: center;

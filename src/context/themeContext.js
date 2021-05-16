@@ -6,6 +6,7 @@ export const ThemeContext = createContext()
 export const ThemeContextProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(true)
   const [curTheme, setCurTheme] = useState(themes.default.data.light)
+  const [profiles, setProfiles] = useState([])
 
   useEffect(() => {
     if (isDark) {
@@ -16,7 +17,9 @@ export const ThemeContextProvider = ({ children }) => {
   }, [isDark])
 
   return (
-    <ThemeContext.Provider value={{ isDark, setIsDark, curTheme }}>
+    <ThemeContext.Provider
+      value={{ isDark, setIsDark, curTheme, profiles, setProfiles }}
+    >
       {children}
     </ThemeContext.Provider>
   )

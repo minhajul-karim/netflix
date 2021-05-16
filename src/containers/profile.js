@@ -1,36 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header, Profile } from '../components'
 import * as Routes from '../constants/routes'
-import { FirebaseContext } from '../context/firebase'
 import { useHistory } from 'react-router-dom'
 
 export function ProfileContainer({ setProfile, setIsLoading }) {
   const history = useHistory()
-  const { firebase } = useContext(FirebaseContext)
-  const [profiles, setProfiles] = useState([
-    { displayName: 'Iffat', photoURL: 1 },
-    { displayName: 'Moku', photoURL: 2 },
-    { displayName: 'Jubayer', photoURL: 3 },
-  ])
+  const [profiles, setProfiles] = useState([])
 
   useEffect(() => {
-    const unsubRef = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setProfiles((prevProfiles) => [
-          ...prevProfiles,
-          {
-            displayName: user.email
-              .substr(0, user.email.indexOf('@'))
-              .split(/[.\-_]/)[0],
-            photoURL: prevProfiles.length + 1,
-          },
-        ])
-      }
-    })
-    return () => {
-      unsubRef()
+    const profilesStr = window.localStorage.getItem('profiles')
+    if (profilesStr) {
+      setProfiles(JSON.parse(profilesStr))
     }
-  }, [firebase])
+  }, [])
 
   const clickHandler = (displayName, photoURL) => {
     setProfile({ displayName, photoURL })
@@ -68,7 +50,13 @@ export function ProfileContainer({ setProfile, setIsLoading }) {
             </Profile.Item>
           ))}
           {profiles.length < 5 && (
-            <Profile.AddButton onClick={() => history.push(Routes.ADD_PROFILE)}>
+            <Profile.AddButton
+              onClick={() => {
+                history.push({
+                  pathname: Routes.ADD_PROFILE,
+                })
+              }}
+            >
               <Profile.Picture src="add" alt="Add Profile" />
             </Profile.AddButton>
           )}
