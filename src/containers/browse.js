@@ -16,6 +16,7 @@ export function BrowseContainer({ slides }) {
   const [feature, setFeature] = useState({})
   const [shouldDisplayFeature, setShouldDisplayFeature] = useState(false)
   const [displayFeatureIndex, setDisplayFeatureIndex] = useState(null)
+  const [hasClickedPlayBtn, setHasClickedPlayBtn] = useState(false)
   const { firebase } = useContext(FirebaseContext)
   const { isDark, setIsDark } = useContext(ThemeContext)
   const displayName =
@@ -102,7 +103,15 @@ export function BrowseContainer({ slides }) {
               guise he projects in a futile attempt to feel like he's part of
               the world around him.
             </Header.Text>
-            <Header.PlayButton>Play</Header.PlayButton>
+            <Header.PlayButton onClick={() => setHasClickedPlayBtn(true)}>
+              Play
+            </Header.PlayButton>
+            <Player
+              hasClickedPlayBtn={hasClickedPlayBtn}
+              setHasClickedPlayBtn={setHasClickedPlayBtn}
+            >
+              <Player.Video />
+            </Player>
           </Header.Feature>
         </Header>
 

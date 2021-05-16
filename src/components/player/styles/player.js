@@ -12,7 +12,6 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  margin: 0 20px;
 `
 
 export const Inner = styled.div`
@@ -74,7 +73,6 @@ export const Button = styled.button`
   padding-left: 0;
 
   &:hover {
-    transform: scale(1.05);
     background-color: #ff0a16;
   }
 `
