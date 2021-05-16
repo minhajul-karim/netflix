@@ -4,13 +4,22 @@ import { Footer } from '../components'
 export function FooterContainer() {
   return (
     <Footer>
-      <Footer.Title>Questions? Contact us.</Footer.Title>
+      <Footer.Title>Questions? Contact me.</Footer.Title>
       <Footer.Break />
       <Footer.Row>
         <Footer.Column>
-          <Footer.Link href="#">FAQ</Footer.Link>
-          <Footer.Link href="#">Investor Relations</Footer.Link>
-          <Footer.Link href="#">Privacy</Footer.Link>
+          <Footer.Link target="_blank" href="https://minhajul-karim.github.io/">
+            Portfolio
+          </Footer.Link>
+          <Footer.Link target="_blank" href="https://twitter.com/minhajul93">
+            Twitter
+          </Footer.Link>
+          <Footer.Link
+            target="_blank"
+            href="https://www.linkedin.com/in/minhajul/"
+          >
+            LinkedIn
+          </Footer.Link>
           <Footer.Link href="#">Speed Test</Footer.Link>
         </Footer.Column>
 
@@ -36,7 +45,8 @@ export function FooterContainer() {
         </Footer.Column>
       </Footer.Row>
       <Footer.Break />
-      <Footer.Text>Netflix Bangladesh</Footer.Text>
+      <Footer.Text>Made with ❤️ in React.</Footer.Text>
+      <Footer.Text>Email: minhajul.kaarim@gmail.com</Footer.Text>
     </Footer>
   )
 }
