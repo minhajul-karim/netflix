@@ -100,7 +100,7 @@ export const FlexContainer = styled.div`
 
   @media (max-width: 500px) {
     flex-direction: ${({ flexDirection }) => flexDirection};
-    justify-content: center;
+    justify-content: ${({ justifyContentSmall }) => justifyContentSmall};
   }
 `
 

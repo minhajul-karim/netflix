@@ -8,6 +8,10 @@ export const Title = styled.h1`
   font-size: 40px;
   color: ${({ theme }) => theme.color};
   text-align: center;
+
+  @media (max-width: 500px) {
+    font-size: 35px;
+  }
 `
 
 export const Picture = styled.img`
@@ -68,6 +72,7 @@ export const AddButton = styled.button`
   border-radius: 50%;
   width: 60px;
   height: 60px;
+  margin: 20px;
   margin-bottom: 40px;
   cursor: pointer;
   display: flex;

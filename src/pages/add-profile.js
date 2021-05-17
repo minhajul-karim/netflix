@@ -34,7 +34,7 @@ export default function AddProfile() {
   return (
     <Form.Base maxWidth="500px" marginTop="100px">
       <Form.Title>Add Profile</Form.Title>
-      <Form.Text>App a profile for another person watching Netflix.</Form.Text>
+      <Form.Text>Add a profile for another person watching Netflix.</Form.Text>
       <Form.FlexContainer justifyContent="flex-start" flexDirection="column">
         <Profile.Item>
           <Profile.Picture src="1" alt="Profile image" />
@@ -47,7 +47,10 @@ export default function AddProfile() {
         />
       </Form.FlexContainer>
       <Form.HorizontalRule />
-      <Form.FlexContainer justifyContent="flex-start">
+      <Form.FlexContainer
+        justifyContent="flex-start"
+        justifyContentSmall="center"
+      >
         <Form.Button
           marginRight="20px"
           background="#e50914"
