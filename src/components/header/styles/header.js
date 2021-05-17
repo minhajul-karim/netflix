@@ -58,7 +58,7 @@ export const Background = styled.div`
 
 export const Link = styled.p`
   font-size: 20px;
-  color: ${({ theme }) => theme.color};
+  color: #fff;
   text-decoration: none;
   margin-right: 30px;
   font-weight: ${({ active }) => (active ? '700' : 'normal')};
