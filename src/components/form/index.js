@@ -12,6 +12,8 @@ import {
   Text,
   Title,
   HorizontalRule,
+  ButtonWithIcon,
+  Icon,
 } from './styles/form'
 
 export default function Form({ children, ...restProps }) {
@@ -32,6 +34,14 @@ Form.Input = function FormInput({ ...restProps }) {
 
 Form.Button = function FormButton({ children, ...restProps }) {
   return <Button {...restProps}>{children}</Button>
+}
+
+Form.ButtonWithIcon = function FormButtonWithIcon({ children, ...restProps }) {
+  return <ButtonWithIcon {...restProps}>{children}</ButtonWithIcon>
+}
+
+Form.Icon = function FormIcon({ src, ...restProps }) {
+  return <Icon src={src} {...restProps} />
 }
 
 Form.FlexContainer = function FormRememberMeContainer({

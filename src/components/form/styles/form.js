@@ -58,10 +58,19 @@ export const Button = styled.button`
   margin: 24px 0 12px;
   margin-right: ${({ marginRight }) => marginRight};
   padding: 15px;
-  color: ${({ theme }) => theme.color};
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+`
+
+export const ButtonWithIcon = styled(Button)`
+  width: 100%;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: ${({ theme }) => theme.color};
 `
 
 export const Label = styled.label`
@@ -81,6 +90,7 @@ export const Link = styled(RouteLink)`
 
 export const Text = styled.p`
   color: ${({ theme }) => theme.color};
+  text-align: ${({ textAlign }) => textAlign};
 `
 
 export const SmallText = styled.span`
@@ -111,4 +121,9 @@ export const HorizontalRule = styled.hr`
   @media (max-width: 500px) {
     display: none;
   }
+`
+
+export const Icon = styled.img`
+  width: 18px;
+  height: 18px;
 `

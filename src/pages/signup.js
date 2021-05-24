@@ -8,11 +8,10 @@ import { FirebaseContext } from '../context/firebase'
 
 export default function SignUp() {
   const [error, setError] = useState('')
-  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { firebase } = useContext(FirebaseContext)
-  const isFormValid = firstName && email && password ? true : false
+  const isFormValid = email && password ? true : false
   const history = useHistory()
 
   function submitHandler(event) {
@@ -20,15 +19,25 @@ export default function SignUp() {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        userCredential.user
-          .updateProfile({
-            displayName: firstName,
-            photoURL: Math.floor(Math.random() * 5) + 1,
-          })
-          .then(() => {
-            history.push(Routes.BROWSE)
-          })
+      .then(() => {
+        history.push(Routes.BROWSE)
+      })
+      .catch((err) => {
+        console.log(err)
+        setError(err.message)
+      })
+  }
+
+  function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    provider.setCustomParameters({
+      prompt: 'select_account',
+    })
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(() => {
+        history.push(Routes.BROWSE)
       })
       .catch((err) => {
         console.log(err)
@@ -43,12 +52,6 @@ export default function SignUp() {
           <Form.Title>Sign Up</Form.Title>
           <Form.Base method="POST" onSubmit={submitHandler}>
             {error && <Form.Error>{error}</Form.Error>}
-            <Form.Input
-              type="text"
-              placeholder="First name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
             <Form.Input
               type="text"
               placeholder="Email or phone number"
@@ -75,6 +78,11 @@ export default function SignUp() {
               Need help?
             </Form.Link>
           </Form.FlexContainer>
+          <Form.Text textAlign="center">Or</Form.Text>
+          <Form.ButtonWithIcon onClick={signInWithGoogle}>
+            <Form.Icon src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" />
+            Sign up with Goggle
+          </Form.ButtonWithIcon>
           <Form.Text>
             Already a user?{' '}
             <Form.Link to={Routes.SIGN_IN} color="#fff">

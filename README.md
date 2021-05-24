@@ -4,7 +4,7 @@
 <p align="center">
   <h3 align="center">Netflix</h3>
   <p align="center">
-    A clone of netflix.com where users can authenticate themselves, select viewer profiles, browse films and series, and watch vidoes online.
+    A clone of netflix.com where users can authenticate themselves, select viewer profiles, browse films and series, and watch videos online.
     <br />
     <a href="https://github.com/minhajul-karim/netflix"><strong>Explore the docs »</strong></a>
     <br />

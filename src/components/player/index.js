@@ -16,8 +16,6 @@ export default function Player({
     setShowPlayer(hasClickedPlayBtn)
   }, [hasClickedPlayBtn])
 
-  console.log(showPlayer)
-
   return (
     <PlayerContext.Provider
       value={{ showPlayer, setShowPlayer, setHasClickedPlayBtn }}

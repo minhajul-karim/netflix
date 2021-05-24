@@ -14,7 +14,6 @@ export const Container = styled.section`
 
   @media (max-width: 1000px) {
     margin: 0 20px;
-    // margin-bottom: 50px;
   }
 `
 
@@ -243,6 +242,7 @@ export const Dropdown = styled.div`
 
     ${Link}, ${Picture} {
       cursor: default;
+      color: ${({ theme }) => theme.color};
     }
   }
 

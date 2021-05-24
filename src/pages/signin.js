@@ -28,6 +28,23 @@ export default function SignIn(props) {
       })
   }
 
+  function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    provider.setCustomParameters({
+      prompt: 'select_account',
+    })
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(() => {
+        history.push(Routes.BROWSE)
+      })
+      .catch((err) => {
+        console.log(err)
+        setError(err.message)
+      })
+  }
+
   return (
     <>
       <HeaderContainer>
@@ -37,7 +54,7 @@ export default function SignIn(props) {
             {error && <Form.Error>{error}</Form.Error>}
             <Form.Input
               type="text"
-              placeholder="Email or phone number"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -61,6 +78,11 @@ export default function SignIn(props) {
               Need help?
             </Form.Link>
           </Form.FlexContainer>
+          <Form.Text textAlign="center">Or</Form.Text>
+          <Form.ButtonWithIcon onClick={signInWithGoogle}>
+            <Form.Icon src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" />
+            Sign in with Goggle
+          </Form.ButtonWithIcon>
           <Form.Text>
             New to Netflix?{' '}
             <Form.Link to={Routes.SIGN_UP} color="#fff">
